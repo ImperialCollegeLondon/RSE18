@@ -1,0 +1,10 @@
+/.atom/
+/.benchmarks/
+/.coverage
+/.envrc
+/.hypothesis/
+/.mypy_cache/
+/.pytest_cache/
+/.tox/
+__pycache__/
+/venv/
