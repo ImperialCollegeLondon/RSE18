@@ -10,3 +10,10 @@ def step(board):
     """Return a new board corresponding to one step of the game"""
     nbrs_count = count_neighbours(board)
     return (nbrs_count == 3) | (board & (nbrs_count == 2))
+
+
+def play(board, iterations):
+    """Return a new board corresponding to `iterations` steps of the game"""
+    for _ in range(iterations):
+        board = step(board)
+    return board.tolist()
