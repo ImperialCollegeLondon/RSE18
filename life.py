@@ -12,7 +12,7 @@ def step(board):
     return (nbrs_count == 3) | (board & (nbrs_count == 2))
 
 
-def play(board, iterations):
+def play(board, iterations: int):
     """Return a new board corresponding to `iterations` steps of the game"""
     for _ in range(iterations):
         board = step(board)
