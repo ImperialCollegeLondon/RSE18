@@ -34,5 +34,5 @@ def test_step(board):
     ]
 
 
-def test_play(board) -> None:
+def test_play(board):
     assert play(board, 2) == board
