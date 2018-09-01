@@ -1,4 +1,8 @@
+import numpy as np
 import pytest
+from hypothesis import given
+from hypothesis.extra.numpy import arrays
+from hypothesis.strategies import integers
 
 from life import count_neighbours, play, step
 
@@ -36,3 +40,17 @@ def test_step(board):
 
 def test_play(board) -> None:
     assert play(board, 2) == board
+
+
+# @given(lists(lists(integers(0, 1))), integers(max_value=20))
+# @given(lists(lists(integers(0, 1))), integers(min_value=1, max_value=20))
+# @given(
+#     lists(lists(integers(0, 1), min_size=1), min_size=1),
+#     integers(min_value=1, max_value=20),
+# )
+@given(
+    arrays(np.int8, integers(min_value=1, max_value=10).map(lambda i: (i, i))),
+    integers(min_value=1, max_value=20),
+)
+def test_play_fuzz(board, iterations):
+    play(board, iterations)

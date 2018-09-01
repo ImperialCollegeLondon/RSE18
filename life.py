@@ -14,6 +14,9 @@ def step(board):
 
 def play(board, iterations: int):
     """Return a new board corresponding to `iterations` steps of the game"""
+    assert len(board) > 0
+    assert all(len(row) == len(board) for row in board)
+    assert iterations > 0
     for _ in range(iterations):
         board = step(board)
     return board.tolist()
