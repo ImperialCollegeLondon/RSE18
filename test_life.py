@@ -36,3 +36,7 @@ def test_step(board):
 
 def test_play(board):
     assert play(board, 2) == board
+
+
+def test_play_performance(board, benchmark):
+    benchmark(play, board, 500)
