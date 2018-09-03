@@ -1,9 +1,14 @@
-from scipy import signal
+import numpy as np
 
 
 def count_neighbours(board):
     """Return an array of neighbour counts for each element of `board`"""
-    return signal.convolve2d(board, [[1, 1, 1], [1, 0, 1], [1, 1, 1]], mode="same")
+    return sum(
+        np.roll(np.roll(board, i, 0), j, 1)
+        for i in (-1, 0, 1)
+        for j in (-1, 0, 1)
+        if (i != 0 or j != 0)
+    )
 
 
 def step(board):
